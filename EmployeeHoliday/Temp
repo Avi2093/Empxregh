@@ -1,0 +1,43 @@
+public class HomeController1 : Controller
+    {
+        public IActionResult Index1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddData(EmployeeDetails model)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TestDB;Integrated Security=True"))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("spAddEmployeeDetails", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@loginID", model.loginID);
+                    command.Parameters.AddWithValue("@firstName", model.firstName);
+                    command.Parameters.AddWithValue("@lastName", model.lastName);
+                    command.Parameters.AddWithValue("@employeeEmail", model.employeeEmail);
+                    command.Parameters.AddWithValue("@fromDate", model.fromDate);
+                    command.Parameters.AddWithValue("@toDate", model.toDate);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            return RedirectToAction("Index1");
+        }
+    }
+
+    public class EmployeeDetails
+    {
+        public string loginID { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string employeeEmail { get; set; }
+        public DateTime fromDate { get; set; }
+        public DateTime toDate { get; set; }
+    
+}
