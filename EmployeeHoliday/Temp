@@ -1,0 +1,42 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using EmployeeHoliday.Models;
+
+namespace EmployeeHoliday.Controllers
+{
+    public class HomeController1 : Controller
+    {
+        [HttpGet]
+        public IActionResult Index1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(EmployeeDetails employee)
+        {
+            if (ModelState.IsValid)
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TestDB;Integrated Security=True"))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("sp_InsertEmployeeDetails", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@LoginID", employee.LoginID);
+                        command.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                        command.Parameters.AddWithValue("@LastName", employee.LastName);
+                        command.Parameters.AddWithValue("@EmployeeEmail", employee.EmployeeEmail);
+                        command.Parameters.AddWithValue("@FromDate", employee.FromDate);
+                        command.Parameters.AddWithValue("@ToDate", employee.ToDate);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                return RedirectToAction("Index1");
+            }
+            return View(employee);
+        }
+    }
+}
