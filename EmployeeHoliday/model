@@ -1,0 +1,34 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace EmployeeHoliday.Models
+{
+    public class EmployeeDetails
+    {
+        [Required]
+        [Display(Name = "NT ID")]
+        public string LoginID { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Employee Email")]
+        public string EmployeeEmail { get; set; }
+
+        [Required]
+        [Display(Name = "From Date")]
+        [DataType(DataType.Date)]
+        public DateTime FromDate { get; set; }
+
+        [Required]
+        [Display(Name = "To Date")]
+        [DataType(DataType.Date)]
+        public DateTime ToDate { get; set; }
+    }
+}
