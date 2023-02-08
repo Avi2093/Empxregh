@@ -1,0 +1,43 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using EmployeeHoliday.Models;
+
+namespace EmployeeHoliday.Controllers
+{
+    public class EmployeeHolidayController : Controller
+    {
+      
+        public IActionResult Index2()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Index2(EmployeeDetails employee)
+        {
+            if (ModelState.IsValid)
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=DONTPANIC\\MSSQLSERVER01;Initial Catalog=JiraAPI_DB;Integrated Security=True;"))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("sp_InsertEmployee", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@employeeIdentity", employee.EmployeeIdentity);
+                        command.Parameters.AddWithValue("@loginId", employee.LoginID);
+                        command.Parameters.AddWithValue("@firstName", employee.FirstName);
+                        command.Parameters.AddWithValue("@lastName", employee.LastName);
+                        command.Parameters.AddWithValue("@employeeEmail", employee.EmployeeEmail);
+                        command.Parameters.AddWithValue("@fromDate", employee.FromDate);
+                        command.Parameters.AddWithValue("@ToDate", employee.ToDate);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                return RedirectToAction("Index2");
+            }
+            return View(employee);
+        }
+
+    }
+}
