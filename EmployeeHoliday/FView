@@ -1,0 +1,32 @@
+<body style="background-image: url(https://www.pixelstalk.net/wp-content/uploads/images6/Aesthetic-Wallpaper-White-Wallpaper-Cloud.jpg); background-size: cover;">
+    <h1 style="text-align: center; font-weight: bold; margin-top: 50px;">EMPLOYEE HOLIDAY NOTIFICATION BLOCKER</h1>
+    <div class="form-container" style="width: 50%; margin: 0 auto; background-color: rgba(255, 255, 255, 0.7); padding: 50px; border-radius: 10px;">
+        <form method="post">
+            <div class="form-group" style="text-align: left;">
+                <label for="loginID" style="font-weight: bold;">NT ID <span style="color: red;">*</span>:</label>
+                <input type="text" class="form-control" id="loginID" name="loginID" required placeholder="Please enter NT ID">
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label for="firstName" style="font-weight: bold;">First Name <span style="color: red;">*</span>:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label for="lastName" style="font-weight: bold;">Last Name <span style="color: red;">*</span>:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label for="employeeEmail" style="font-weight: bold;">Employee Email <span style="color: red;">*</span>:</label>
+                <input type="email" class="form-control" id="employeeEmail" name="employeeEmail" required>
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label for="fromDate" style="font-weight: bold;">From Date <span style="color: red;">*</span>:</label>
+                <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label for="toDate" style="font-weight: bold;">To Date <span style="color: red;">*</span>:</label>
+                <input type="date" class="form-control" id="toDate" name="toDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
