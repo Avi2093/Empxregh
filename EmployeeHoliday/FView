@@ -3,6 +3,10 @@
     <div class="form-container" style="width: 50%; margin: 0 auto; background-color: rgba(255, 255, 255, 0.7); padding: 50px; border-radius: 10px;">
         <form method="post">
             <div class="form-group" style="text-align: left;">
+                <label for="employeeIdentity" style="font-weight: bold;">Employee Identity <span style="color: red;">*</span>:</label>
+                <input type="text" class="form-control" id="employeeIdentity" name="employeeIdentity" required>
+            </div>
+            <div class="form-group" style="text-align: left;">
                 <label for="loginID" style="font-weight: bold;">NT ID <span style="color: red;">*</span>:</label>
                 <input type="text" class="form-control" id="loginID" name="loginID" required placeholder="Please enter NT ID">
             </div>
